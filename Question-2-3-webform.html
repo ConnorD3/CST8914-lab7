@@ -132,7 +132,7 @@
             validateInput('gender', 'Please tell us your gender!');
             validateInput('accept_agbs', 'You must accept our terms and conditions!');
       
-            if ($('.error').length === 0) {
+            if (document.querySelector('.errors') === null) {//changed to detect errors added to form
               return alert('All inputs are valid.');
             }
           }
