@@ -29,7 +29,7 @@
         <h1>Feedback form</h1>
     <form>
         <div class="control">
-          <label>Full name <span class="required">*</span></label><input id="name" name="name" type="text" aria-label="Enter full name" required/>
+          <label>Full name <span class="required">*</span></label><input id="name" name="name" type="text" aria-label="Enter full name" required/><!-- required attribute added to input to add audio cue for screen reader -->
             <!--aria-label added to assist screenreader identify full name input-->
         </div>
         <div class="control">
@@ -102,6 +102,7 @@
             $error = $('<a href="#">' + message + '</a>');
             $error.click(function (e) {
               // If we rely on the link's href pointing to the input's ID, it doesn't trigger forms mode in screen readers
+                //I found that adding an href attribute did successfully focus on the referenced element and switched to forms mode
               $referencedElement.focus();
               return e.preventDefault();
             });
@@ -133,9 +134,9 @@
             validateInput('accept_agbs', 'You must accept our terms and conditions!');
       
             if (document.querySelector('.errors') === null) {//changed to detect errors added to form if there are any
-              return alert('All inputs are valid.'); //If no errors the alert is printed
+              return alert('All inputs are valid.'); //If no errors added to error section the alert is printed
             }else{focusItem = docement.querySelector('.errors')
-                 focusItem.focus();}//Added to move focus to error section
+                 focusItem.focus();}//Added to move focus to error section on initial tab after errors thrown
           }
         });
       }).call(void 0);</script>
